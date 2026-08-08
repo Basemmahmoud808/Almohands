@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Tajawal, Alexandria } from 'next/font/google';
 import { SafeClerkProvider } from '@/components/SafeClerkProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -20,7 +20,14 @@ const alexandria = Alexandria({
 
 export const metadata: Metadata = {
   title: 'منصة المهندس — أ. رضا خيرت | مادة الرياضيات',
-  description: 'المنصة التعليمية الأولى لشرح مادة الرياضيات للمرحلة الثانوية بأسلوب المهندس رضا خيرت. كورسات، امتحانات إلكترونية وشيتات محلولة.',
+  description: 'المنصة التعليمية الأولى لشرح مادة الرياضيات للمرحلة الإعدادية والأول الثانوي بأسلوب المهندس رضا خيرت.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <SafeClerkProvider>
       <html lang="ar" dir="rtl" className={`${tajawal.variable} ${alexandria.variable} h-full antialiased`} suppressHydrationWarning>
-        <body className="min-h-full flex flex-col font-sans bg-slate-50 text-slate-900 dark:bg-[#060913] dark:text-slate-100 transition-colors duration-300">
+        <body className="min-h-full flex flex-col font-sans bg-slate-50 text-slate-900 dark:bg-[#060913] dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <Header />
             <main className="flex-grow">{children}</main>
