@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------
+   HIGH-CONTRAST LIGHT & DARK DESIGN SYSTEM
+   Tajawal & Alexandria Fonts | Emerald #235D3A & #73C088
+   ---------------------------------------------------- */
+
+@layer base {
+  :root {
+    /* Custom User Emerald Hex Colors */
+    --emerald-forest-dark: #235d3a;
+    --emerald-mint-accent: #15803d;
+
+    /* Light Mode Semantic Colors - High Contrast Slate & Deep Emerald */
+    --color-bg-app: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-elevated: #ffffff;
+    --color-text-main: #0f172a;
+    --color-text-muted: #334155;
+    --color-border-subtle: #cbd5e1;
+
+    --color-primary: #1d4ed8;
+    --color-secondary: #15803d;
+    --color-accent: #047857;
+  }
+
+  .dark {
+    /* Dark Mode Semantic Colors - Deep Obsidian Navy & Emerald Glow */
+    --color-bg-app: #0b1120;
+    --color-surface: #0f172a;
+    --color-surface-elevated: #1e293b;
+    --color-text-main: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-border-subtle: #1e293b;
+
+    --color-primary: #3b82f6;
+    --color-secondary: #73c088;
+    --color-accent: #235d3a;
+  }
+}
+
+/* Custom Emerald Color Utility Classes */
+.bg-emerald-forest {
+  background-color: #235d3a;
+}
+
+.bg-emerald-mint {
+  background-color: #73c088;
+}
+
+.text-emerald-forest {
+  color: #15803d;
+}
+
+.dark .text-emerald-forest {
+  color: #73c088;
+}
+
+.text-emerald-mint {
+  color: #16a34a;
+}
+
+.dark .text-emerald-mint {
+  color: #73c088;
+}
+
+.border-emerald-mint {
+  border-color: #16a34a;
+}
+
+.dark .border-emerald-mint {
+  border-color: #73c088;
+}
+
+.emerald-gradient-text {
+  background: linear-gradient(135deg, #15803d 0%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .emerald-gradient-text {
+  background: linear-gradient(135deg, #73c088 0%, #235d3a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Base Body Setup */
+body {
+  background-color: var(--color-bg-app);
+  color: var(--color-text-main);
+  font-family: var(--font-tajawal), 'Tajawal', var(--font-cairo), 'Cairo', system-ui, sans-serif;
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ultra Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(115, 192, 136, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Seamless Teacher Photo Masking (No Box / No Border) */
+.hero-photo-seamless {
+  mask-image: radial-gradient(ellipse 85% 90% at 50% 40%, black 55%, transparent 100%), linear-gradient(to bottom, black 60%, transparent 98%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 90% at 50% 40%, black 55%, transparent 100%), linear-gradient(to bottom, black 60%, transparent 98%);
+  filter: drop-shadow(0 15px 45px rgba(35, 93, 58, 0.22));
+}
+
+.dark .hero-photo-seamless {
+  filter: drop-shadow(0 20px 65px rgba(56, 189, 248, 0.35));
+}
+
+.hero-fade-bottom {
+  background: linear-gradient(to top, var(--color-bg-app) 0%, rgba(5, 11, 24, 0.4) 40%, transparent 100%);
+}
+
+/* Math Grid Accents */
+.math-grid-bg {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Animated Gradient Blobs Keyframes */
+@keyframes blobSlow1 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate3d(60px, -80px, 0px) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-40px, 50px, 0px) scale(0.9);
+  }
+}
+
+@keyframes blobSlow2 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate3d(-70px, 60px, 0px) scale(0.95);
+  }
+  66% {
+    transform: translate3d(50px, -60px, 0px) scale(1.1);
+  }
+}
+
+@keyframes blobSlow3 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, 70px, 0px) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-60px, -50px, 0px) scale(0.92);
+  }
+}
+
+.animate-blob-slow-1 {
+  animation: blobSlow1 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-blob-slow-2 {
+  animation: blobSlow2 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-blob-slow-3 {
+  animation: blobSlow3 25s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-slow-1,
+  .animate-blob-slow-2,
+  .animate-blob-slow-3 {
+    animation: none !important;
+  }
+}
